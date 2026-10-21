@@ -4,6 +4,7 @@ const route = id => `/#${new URLSearchParams({ doc: id })}`;
 test('separate articles retain independent reading positions', async ({ page }) => {
   await page.goto(route('docs/inference/caching.md'));
   await expect(page.locator('#article h1')).toBeVisible();
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem('aiinfra-positions') || '{}')['docs/inference/caching.md']);
   await page.evaluate(() => scrollTo(0, 1400));
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('aiinfra-positions') || '{}')['docs/inference/caching.md']?.y || 0)).toBeGreaterThan(1000);
   await page.evaluate(() => { location.hash = new URLSearchParams({ doc: 'docs/inference/aibrix.md' }).toString(); });
