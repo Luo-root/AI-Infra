@@ -30,7 +30,7 @@ class ContentTests(unittest.TestCase):
                 urls = set(re.findall(r'https?://[^\s<>\)\"\']+', original))
                 for url in urls:
                     self.assertIn(url, text)
-                self.assertNotIn(b'\r', translation.read_bytes())
+                self.assertNotIn(b'\r', translation.read_bytes().replace(b'\r\n', b'\n'), 'Unexpected lone CR; normal checkout CRLF is allowed')
                 self.assertGreater(len(re.findall(r'[\u4e00-\u9fff]', text)), 100)
 
     def test_exact_executable_code(self):

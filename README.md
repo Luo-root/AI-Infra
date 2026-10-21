@@ -4,7 +4,7 @@
 
 基于 [pacoxu/AI-Infra](https://github.com/pacoxu/AI-Infra) 的内容，在保留原文与出处的基础上，增加中文翻译、入门导读、术语与英语词卡，以及适配电脑和手机的阅读界面。
 
-> GitHub Pages 部署配置正在接入，尚未首次发布。发布成功后这里会补上真实访问地址。
+> **[在线阅读 → luo-root.github.io/AI-Infra](https://luo-root.github.io/AI-Infra/)** · 已通过 GitHub Actions 部署。
 
 [项目源码 / Star](https://github.com/Luo-root/AI-Infra) · [使用说明](./learning/README.zh-CN.md) · [上游中文全景](https://github.com/pacoxu/AI-Infra/blob/main/README.zh-CN.md) · [上游英文全景](https://github.com/pacoxu/AI-Infra/blob/main/README.md)
 
@@ -33,7 +33,7 @@ AI-Infra 的资料很多，但刚开始学时经常卡在三个地方：文章�
 
 ## 当前进度与边界
 
-首批新增 6 篇完整译文：Pod 生命周期、NVIDIA GPU Operator、性能测试工具、KV 缓存、AIBrix 和 Kubernetes 学习计划；另有 4 篇入门导读、30 条精选词条。覆盖数量以后以网站实时生成的统计为准。
+首批完成 6 篇完整译文；第二批补齐推理目录剩余 16 篇，涵盖模型结构、并行与 PD 分离、推理平台、模型生命周期、分发、记忆与发布门禁。另有 4 篇入门导读、30 条精选词条。覆盖数量以网站实时生成的统计为准。
 
 - 尚未完成全量翻译；上游已有中文未全部逐句复核。
 - 新译文没有经过人工专业审校，产品版本、支持矩阵和性能数字未全部独立实测。
