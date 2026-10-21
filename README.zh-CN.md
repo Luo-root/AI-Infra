@@ -1,3 +1,8 @@
+> 本 Fork 的项目说明请看 [AI-Infra 中文学习阅读器](./README.md)。
+> 本页为兼容旧链接保留的上游中文首页；同步维护的副本位于
+> `learning/upstream/README.zh-CN.md`（供阅读器解析，GitHub 阅读请访问
+> [上游中文全景](https://github.com/pacoxu/AI-Infra/blob/main/README.zh-CN.md)）。
+
 ---
 status: Active
 maintainer: pacoxu
