@@ -19,6 +19,10 @@ source_commit: 3cc83ef18ed502929e55d0e598129c7525e5f993
 | 模型 Model | 输入给定后，如何计算输出的概率等结果 | 不是整套对外服务 |
 | 推理引擎 Inference engine | 高效执行模型计算，安排计算与显存使用 | 不等于管理整座集群的平台 |
 | Kubernetes | 管理容器化工作负载，让它们落到节点上运行 | 不负责判断模型回答对不对 |
+| CRI / containerd | 容器编排层和容器运行时之间的接口 / 运行容器的实现 | 不等于 Kubernetes 调度器 |
+| KubeVirt | 在 Kubernetes 上管理虚拟机工作负载的项目 | 不等于普通 Pod 容器 |
+| KWOK | 用来模拟 Kubernetes 节点和 Pod 行为的测试工具 | 不代表真实 GPU 性能 |
+| Helm | 用 Chart 打包和安装 Kubernetes 应用的工具 | 不等于应用本身 |
 | 推理平台 | 部署、路由、扩缩容、监控等服务管理 | 并不是又训练了一个模型 |
 
 ## 这条学习路线怎样走

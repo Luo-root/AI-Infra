@@ -329,11 +329,13 @@
         "exampleEn":  "AIBrix provides a runtime sidecar.",
         "exampleZh":  "AIBrix 提供运行时边车组件。",
         "source":  "docs/inference/aibrix.md；docs/kubernetes/learning-plan.md；original 合并两处短语；例句为自造示例。",
-        "context":  "容器运行时与 AIBrix AI 运行时是不同层次",
+        "context":  "容器运行时（如 containerd）与 AIBrix AI 运行时是不同层次；注意区分 runtime 与 inference engine",
         "literal":  "程序运行期间，也可指运行支持环境。",
         "pos":  "名词",
         "aliases":  [
                         "运行时",
+                        "容器运行时",
+                        "AI runtime",
                         "runtimes",
                         "run-time"
                     ],
@@ -450,11 +452,13 @@
         "exampleEn":  "Run the benchmark with the same workload.",
         "exampleZh":  "使用相同的工作负载运行基准测试。",
         "source":  "docs/inference/performance-testing.md；例句为自造示例。",
-        "context":  "推理与 Kubernetes 性能比较",
+        "context":  "推理与 Kubernetes 性能比较；需固定 workload、配置和指标口径",
         "literal":  "比较时使用的基准。",
         "pos":  "名词／动词",
         "aliases":  [
                         "基准测试",
+                        "性能基准",
+                        "推理基准测试",
                         "benchmarks",
                         "benchmarking"
                     ],
@@ -474,11 +478,13 @@
         "exampleEn":  "Long prompts change the inference workload.",
         "exampleZh":  "较长的提示词会改变推理工作负载的特征。",
         "source":  "docs/inference/aibrix.md；docs/inference/performance-testing.md；例句为自造示例。",
-        "context":  "应用部署与测试负载两种用法",
+        "context":  "Kubernetes 应用部署与性能测试负载两种用法；benchmark 的输入条件之一",
         "literal":  "需要完成的工作量。",
         "pos":  "名词",
         "aliases":  [
                         "工作负载",
+                        "测试负载",
+                        "应用工作负载",
                         "workloads"
                     ],
         "sourceUrl":  "https://en.wiktionary.org/wiki/workload",
@@ -689,11 +695,13 @@
         "exampleEn":  "Logs and traces improve observability.",
         "exampleZh":  "日志和追踪有助于提升可观测性。",
         "source":  "docs/kubernetes/learning-plan.md；例句为自造示例。",
-        "context":  "Kubernetes 监控、日志与追踪",
+        "context":  "Kubernetes 与模型服务的指标、日志、追踪和事件；用于定位 workload 与 runtime 问题",
         "literal":  "可以被观察的性质。",
         "pos":  "名词",
         "aliases":  [
-                        "可观测性"
+                        "可观测性",
+                        "observability stack",
+                        "系统可观测性"
                     ],
         "sourceUrl":  "https://en.wiktionary.org/wiki/observability",
         "note":  "例句为自造示例。原义为学习性概述；sourceUrl 为词典参考入口，本轮未逐页核验；未在线核实音标，故留空。"
@@ -721,5 +729,65 @@
                     ],
         "sourceUrl":  "https://en.wiktionary.org/wiki/replica",
         "note":  "例句为自造示例。原义为学习性概述；sourceUrl 为词典参考入口，本轮未逐页核验；未在线核实音标，故留空。"
+    },
+    {
+        "id": "cri", "term": "CRI", "kind": "term", "zh": "容器运行时接口", "plain": "Kubernetes 用来和容器运行时沟通的一套接口约定。", "meaning": "Kubernetes 与 containerd、CRI-O 等容器运行时之间的标准接口；它是接口规范，不是某个具体运行时。", "original": "Container Runtime Interface (CRI)", "ipa": "", "accent": "", "exampleEn": "The kubelet uses CRI to communicate with the container runtime.", "exampleZh": "kubelet 使用 CRI 与容器运行时通信。", "source": "Kubernetes 官方文档中的 Container Runtime Interface；例句为自造示例。", "context": "Kubernetes 节点上的 kubelet、容器运行时与接口契约", "literal": "Container Runtime Interface 的缩写。", "pos": "名词缩写", "aliases": ["容器运行时接口", "Container Runtime Interface"], "sourceUrl": "https://kubernetes.io/docs/concepts/architecture/cri/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方 CRI 文档入口；技术缩写不编音标。"
+    },
+    {
+        "id": "containerd", "term": "containerd", "kind": "term", "zh": "containerd 容器运行时", "plain": "负责管理容器生命周期和镜像的容器运行时。", "meaning": "实现 OCI 镜像与容器运行能力的开源容器运行时，常通过 CRI 接入 Kubernetes；不是 Kubernetes 本身。", "original": "containerd", "ipa": "", "accent": "", "exampleEn": "containerd pulls the image before starting the Pod.", "exampleZh": "containerd 在启动 Pod 前拉取镜像。", "source": "Kubernetes 学习计划中的 Containerd；例句为自造示例。", "context": "容器运行时、镜像与 Kubernetes 节点", "literal": "项目专名，由 container 与 daemon 组合而来。", "pos": "专有名词", "aliases": ["containerd 容器运行时", "容器运行时"], "sourceUrl": "https://containerd.io/", "note": "例句为自造示例。sourceUrl 为 containerd 官方入口；项目名不编音标。"
+    },
+    {
+        "id": "kubevirt", "term": "KubeVirt", "kind": "term", "zh": "KubeVirt；Kubernetes 虚拟机扩展", "plain": "让虚拟机也能由 Kubernetes API 管理。", "meaning": "在 Kubernetes 中运行和编排虚拟机工作负载的项目；不是把虚拟机简单改名为容器。", "original": "KubeVirt", "ipa": "", "accent": "", "exampleEn": "KubeVirt runs a virtual machine alongside container workloads.", "exampleZh": "KubeVirt 让虚拟机和容器工作负载并行运行。", "source": "KubeVirt 官方文档；例句为自造示例。", "context": "Kubernetes 中的虚拟机工作负载与云原生编排", "literal": "Kubernetes 与 virtualization 的项目名组合。", "pos": "专有名词", "aliases": ["Kubernetes 虚拟机", "Kubernetes Virtualization"], "sourceUrl": "https://kubevirt.io/", "note": "例句为自造示例。sourceUrl 为 KubeVirt 官方入口；项目名不编音标。"
+    },
+    {
+        "id": "kwok", "term": "KWOK", "kind": "term", "zh": "KWOK；Kubernetes 无节点集群模拟工具", "plain": "用很少的真实资源模拟大量 Kubernetes 节点和 Pod。", "meaning": "通过模拟节点行为帮助测试调度、控制器和大规模场景；不是用于承载真实生产工作负载的节点实现。", "original": "Kubernetes WithOut Kubelet", "ipa": "", "accent": "", "exampleEn": "KWOK simulates thousands of nodes for scheduler testing.", "exampleZh": "KWOK 为调度器测试模拟数千个节点。", "source": "KWOK 官方项目；例句为自造示例。", "context": "Kubernetes 大规模测试、节点模拟与调度验证", "literal": "Kubernetes WithOut Kubelet 的缩写。", "pos": "专有名词／名词缩写", "aliases": ["Kubernetes WithOut Kubelet", "节点模拟器"], "sourceUrl": "https://kwok.sigs.k8s.io/", "note": "例句为自造示例。sourceUrl 为 KWOK 官方入口；技术缩写不编音标。"
+    },
+    {
+        "id": "helm", "term": "Helm", "kind": "term", "zh": "Helm；Kubernetes 包管理器", "plain": "用可复用的 chart 打包、配置和安装 Kubernetes 应用。", "meaning": "管理 Kubernetes 应用发布与模板化配置的工具；chart 是应用包，不等于单个容器镜像。", "original": "Helm", "ipa": "", "accent": "", "exampleEn": "Helm installs the inference service with a chart.", "exampleZh": "Helm 使用 chart 安装推理服务。", "source": "Helm 官方文档；例句为自造示例。", "context": "Kubernetes 应用打包、配置与发布", "literal": "舵、掌舵；项目专名。", "pos": "专有名词", "aliases": ["Kubernetes 包管理器", "Helm chart", "Helm charts"], "sourceUrl": "https://helm.sh/docs/", "note": "例句为自造示例。sourceUrl 为 Helm 官方文档入口；项目名不编音标。"
+    },
+    {
+        "id": "inference-engine", "term": "inference engine", "kind": "term", "zh": "推理引擎", "plain": "专门把训练好的模型高效运行起来并生成结果的软件组件。", "meaning": "负责模型加载、执行计算、批处理、缓存和设备调度等推理工作的整体软件；普通 engine 可能只是泛指引擎，不一定承担模型推理。", "original": "inference engine", "ipa": "", "accent": "", "exampleEn": "The inference engine batches requests before running the model.", "exampleZh": "推理引擎在运行模型前会把请求组成批次。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型运行、推理服务与性能优化", "literal": "用于推理的引擎。", "pos": "名词短语", "aliases": ["推理引擎", "inference engines"], "sourceUrl": "https://github.com/vllm-project/aibrix", "note": "例句为自造示例。sourceUrl 为 AIBrix 官方项目参考入口；复合技术术语不编音标。"
+    },
+    {
+        "id": "model", "term": "model", "kind": "term", "zh": "模型", "plain": "从数据中学到规律、可以对输入做预测或生成的参数集合。", "meaning": "在推理基础设施中被加载并执行的训练结果；模型本身不是推理引擎，也不是提供网络接口的服务。", "original": "model serving", "ipa": "", "accent": "", "exampleEn": "The model is loaded into GPU memory before serving.", "exampleZh": "模型在提供服务前会加载到 GPU 内存。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型加载、推理与模型服务", "literal": "模型、范例或模特。", "pos": "名词", "aliases": ["模型", "models", "machine learning model"], "sourceUrl": "https://github.com/vllm-project/aibrix", "note": "例句为自造示例。sourceUrl 为 AIBrix 官方项目参考入口；本条按 AI 技术语境解释。"
+    },
+    {
+        "id": "serving", "term": "serving", "kind": "term", "zh": "服务；提供模型服务", "plain": "把模型部署好，让其他程序可以通过请求使用它。", "meaning": "持续接收请求、运行模型并返回结果的服务过程；不只是把模型文件放在磁盘上。", "original": "model serving", "ipa": "", "accent": "", "exampleEn": "Model serving exposes the trained model through an API.", "exampleZh": "模型服务通过 API 暴露训练好的模型。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型部署、在线推理与 API 服务", "literal": "提供、端上菜；技术语境指提供服务。", "pos": "名词；动名词", "aliases": ["模型服务", "model serving", "model serving systems"], "sourceUrl": "https://github.com/vllm-project/aibrix", "note": "例句为自造示例。sourceUrl 为 AIBrix 官方项目参考入口；本条按模型服务语境解释。"
+    },
+    {
+        "id": "cluster", "term": "cluster", "kind": "term", "zh": "集群", "plain": "连在一起、共同承载工作的一组机器或资源。", "meaning": "由控制面和一个或多个节点组成的 Kubernetes 运行环境；不是单台服务器。", "original": "Kubernetes cluster", "ipa": "", "accent": "", "exampleEn": "The service is deployed to a GPU-enabled cluster.", "exampleZh": "该服务部署在带 GPU 的集群中。", "source": "docs/kubernetes/learning-plan.md；例句为自造示例。", "context": "Kubernetes 集群、节点与工作负载", "literal": "聚集成团。", "pos": "名词", "aliases": ["集群", "Kubernetes cluster", "clusters"], "sourceUrl": "https://kubernetes.io/docs/concepts/architecture/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方架构文档入口。"
+    },
+    {
+        "id": "node", "term": "node", "kind": "term", "zh": "节点", "plain": "集群中实际运行 Pod 和其他工作的一台机器。", "meaning": "Kubernetes 集群中的工作机器，可以是虚拟机或物理机；不等于 Pod，也不等于容器。", "original": "node", "ipa": "", "accent": "", "exampleEn": "The scheduler places the Pod on a node with enough GPU memory.", "exampleZh": "调度器把 Pod 放到 GPU 内存充足的节点上。", "source": "docs/kubernetes/learning-plan.md；例句为自造示例。", "context": "Kubernetes 节点资源与 Pod 调度", "literal": "节点、连接点。", "pos": "名词", "aliases": ["节点", "Kubernetes node", "worker node", "nodes"], "sourceUrl": "https://kubernetes.io/docs/concepts/architecture/nodes/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方节点文档入口。"
+    },
+    {
+        "id": "container", "term": "container", "kind": "term", "zh": "容器", "plain": "把应用及其运行依赖隔离打包并运行的一种方式。", "meaning": "共享宿主机内核、拥有隔离文件系统和资源视图的进程运行单元；不是虚拟机。", "original": "container", "ipa": "", "accent": "", "exampleEn": "The container runs the model server with its dependencies.", "exampleZh": "容器带着依赖运行模型服务器。", "source": "docs/kubernetes/learning-plan.md；例句为自造示例。", "context": "容器镜像、Pod 与容器运行时", "literal": "容器、箱子。", "pos": "名词", "aliases": ["容器", "containers", "containerized application"], "sourceUrl": "https://kubernetes.io/docs/concepts/containers/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方容器文档入口。"
+    },
+    {
+        "id": "scheduler", "term": "scheduler", "kind": "term", "zh": "调度器", "plain": "根据资源和约束决定任务放到哪里运行的组件。", "meaning": "Kubernetes 中为未绑定节点的 Pod 选择合适节点的控制面组件；它做放置决策，不负责执行容器。", "original": "Kubernetes scheduler", "ipa": "", "accent": "", "exampleEn": "The scheduler selects a node that satisfies the Pod constraints.", "exampleZh": "调度器选择满足 Pod 约束的节点。", "source": "docs/kubernetes/learning-plan.md；例句为自造示例。", "context": "Kubernetes Pod 放置、资源与调度策略", "literal": "安排日程的人或程序。", "pos": "名词", "aliases": ["调度器", "Kubernetes scheduler", "schedulers"], "sourceUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方 kube-scheduler 文档入口。"
+    },
+    {
+        "id": "operator", "term": "operator", "kind": "term", "zh": "Operator；运算符控制器", "plain": "把人工运维知识写成控制器，自动管理某类应用。", "meaning": "通过自定义资源和控制循环让 Kubernetes 自动完成安装、配置、升级或修复；不是泛指任何操作员。", "original": "Kubernetes Operator", "ipa": "", "accent": "", "exampleEn": "The operator reconciles the model deployment after a configuration change.", "exampleZh": "配置变化后，Operator 会协调模型部署状态。", "source": "Kubernetes 官方 Operator 模式文档；例句为自造示例。", "context": "Kubernetes 自定义资源、控制器与自动化运维", "literal": "操作员；数学或程序运算符。", "pos": "名词", "aliases": ["Operator", "Kubernetes Operator", "运算符控制器", "operators"], "sourceUrl": "https://kubernetes.io/docs/concepts/extend-kubernetes/operator/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方 Operator 模式文档入口。"
+    },
+    {
+        "id": "sidecar", "term": "sidecar", "kind": "term", "zh": "边车容器；边车组件", "plain": "和主应用并排运行、帮它做辅助工作的容器或进程。", "meaning": "在同一 Pod 中与主容器共享网络等资源的辅助容器；它不是主业务容器的别名。", "original": "runtime sidecar", "ipa": "", "accent": "", "exampleEn": "A sidecar exports metrics without changing the model server.", "exampleZh": "边车组件在不修改模型服务器的情况下导出指标。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "Pod 内辅助组件、运行时与可观测性", "literal": "摩托车旁的边斗；技术上指伴随主进程的辅助组件。", "pos": "名词", "aliases": ["边车", "边车容器", "sidecar container", "sidecars"], "sourceUrl": "https://kubernetes.io/docs/concepts/cluster-administration/logging/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方日志与 sidecar 相关文档入口。"
+    },
+    {
+        "id": "endpoint", "term": "endpoint", "kind": "term", "zh": "端点；服务端点", "plain": "客户端可以访问的一个具体网络入口。", "meaning": "模型服务对外提供请求的地址、端口或 API 路径；不等于后端 Pod 本身。", "original": "service endpoint", "ipa": "", "accent": "", "exampleEn": "The client sends prompts to the inference endpoint.", "exampleZh": "客户端把提示词发送到推理端点。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型服务 API、网络访问与流量入口", "literal": "终点、端点。", "pos": "名词", "aliases": ["端点", "服务端点", "API endpoint", "endpoints"], "sourceUrl": "https://kubernetes.io/docs/concepts/services-networking/service/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方 Service 文档入口。"
+    },
+    {
+        "id": "gateway", "term": "gateway", "kind": "term", "zh": "网关", "plain": "统一接收外部请求，再把请求交给合适后端的入口组件。", "meaning": "负责入口流量、协议或策略处理并转发到模型服务的组件；不等于单纯的网络路由表。", "original": "model gateway", "ipa": "", "accent": "", "exampleEn": "The gateway authenticates requests before routing them to a model.", "exampleZh": "网关在把请求路由到模型前先完成鉴权。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型网关、请求入口与后端路由", "literal": "大门、关口。", "pos": "名词", "aliases": ["网关", "model gateway", "API gateway", "gateways"], "sourceUrl": "https://gateway-api.sigs.k8s.io/", "note": "例句为自造示例。sourceUrl 为 Kubernetes Gateway API 官方入口。"
+    },
+    {
+        "id": "router", "term": "router", "kind": "term", "zh": "路由器；路由组件", "plain": "根据规则决定请求下一步交给哪个后端。", "meaning": "在模型服务场景中按模型名、负载或策略选择后端实例；不一定承担网关的鉴权和统一入口职责。", "original": "request router", "ipa": "", "accent": "", "exampleEn": "The router sends each request to an available replica.", "exampleZh": "路由组件把每个请求发送到可用副本。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型请求路由、负载分配与副本选择", "literal": "路由器；决定路径的人或设备。", "pos": "名词", "aliases": ["路由器", "路由组件", "request router", "routers"], "sourceUrl": "https://github.com/vllm-project/aibrix", "note": "例句为自造示例。sourceUrl 为 AIBrix 官方项目参考入口。"
+    },
+    {
+        "id": "checkpoint", "term": "checkpoint", "kind": "term", "zh": "检查点；模型检查点", "plain": "保存某个时刻状态的一份文件或数据。", "meaning": "在模型语境中通常是可恢复模型参数和相关状态的保存版本；不等于最终部署的在线服务。", "original": "model checkpoint", "ipa": "", "accent": "", "exampleEn": "The serving system loads the model checkpoint at startup.", "exampleZh": "服务系统在启动时加载模型检查点。", "source": "docs/inference/aibrix.md；例句为自造示例。", "context": "模型权重、加载与恢复", "literal": "检查点；进程或任务的保存状态。", "pos": "名词", "aliases": ["检查点", "模型检查点", "model checkpoint", "checkpoints"], "sourceUrl": "https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html", "note": "例句为自造示例。sourceUrl 为 PyTorch 官方 checkpoint 参考入口。"
+    },
+    {
+        "id": "conformance", "term": "conformance", "kind": "term", "zh": "一致性；符合性测试", "plain": "检查实现是否遵守约定的接口和行为标准。", "meaning": "验证 Kubernetes 或其他组件是否符合规定 API 和行为的测试结果；通过一致性测试不等于性能优秀。", "original": "Kubernetes conformance", "ipa": "", "accent": "", "exampleEn": "The platform runs conformance tests before the release.", "exampleZh": "平台在发布前运行一致性测试。", "source": "Kubernetes 官方 Conformance 文档；例句为自造示例。", "context": "Kubernetes API 行为、认证与发布验收", "literal": "符合、遵从；一致性。", "pos": "名词", "aliases": ["一致性", "符合性测试", "Kubernetes conformance", "conformance tests"], "sourceUrl": "https://www.cncf.io/kcsp/", "note": "例句为自造示例。sourceUrl 为 CNCF Kubernetes 一致性项目入口。"
+    },
+    {
+        "id": "artifact", "term": "artifact", "kind": "term", "zh": "制品；构建产物", "plain": "构建、训练或发布过程产出的可保存文件或对象。", "meaning": "可被版本化、上传和部署的镜像、模型文件、chart 或报告等产物；不是泛指任何临时文件。", "original": "build artifact", "ipa": "", "accent": "", "exampleEn": "The pipeline stores the model artifact in an object store.", "exampleZh": "流水线把模型制品存入对象存储。", "source": "AI Infra 项目构建与模型部署语境；例句为自造示例。", "context": "镜像、模型文件、Helm chart 与构建交付", "literal": "人工制品、产物。", "pos": "名词", "aliases": ["制品", "构建产物", "build artifact", "artifacts"], "sourceUrl": "https://kubernetes.io/docs/concepts/containers/images/", "note": "例句为自造示例。sourceUrl 为 Kubernetes 官方镜像文档入口，作为容器制品参考；本条为项目语境归纳。"
     }
 ]
