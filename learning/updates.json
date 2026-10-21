@@ -1,0 +1,9 @@
+[
+  {"title":"AI Factory：补充平台各层的职责","url":"https://github.com/pacoxu/AI-Infra/pull/393","note":"已在新增平台导读中解释资源、存储、隔离、服务、观测与成本之间的关系；不是完整PR移植，也不是部署实测。","status":"首批概念增补"},
+  {"title":"DRA + Kueue：联合实验","url":"https://github.com/pacoxu/AI-Infra/pull/387","note":"保留为待验证实验；KWOK控制面模拟不能代表真实GPU/NIC性能。未复跑，不搬海量采样。","status":"待验证"},
+  {"title":"KServe / Seldon 连续学习路径","url":"https://github.com/pacoxu/AI-Infra/pull/332","note":"下一批增补，先核对产品代际、API与命令。","status":"待补充"},
+  {"title":"Pod 生命周期分图与版本","url":"https://github.com/pacoxu/AI-Infra/pull/354","note":"本批已完整翻译当前主文，尚未移植此PR的分图和版本更新；版本声明保留原文快照。","status":"待补充"},
+  {"title":"MCP / A2A 职责边界","url":"https://github.com/pacoxu/AI-Infra/pull/276","note":"新增平台导读已补工具连接与Agent协作的区别，参照两者官方文档；不包含未经验证的部署模板。","status":"首批概念增补"},
+  {"title":"Agent OTel 草稿不重复收录","url":"https://github.com/pacoxu/AI-Infra/pull/369","note":"当前主文已由后续PR扩充，学习现有观测规范即可。","status":"已有正文"},
+  {"title":"containerd 2.4 升级专题","url":"https://github.com/pacoxu/AI-Infra/pull/400","note":"后续按升级风险节选，并复核发布说明与支持窗口。","status":"待补充"}
+]
