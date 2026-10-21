@@ -263,7 +263,15 @@ function highlightTerms(root) {
   const escape = (word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const pattern = new RegExp([...lookup.keys()].sort((a, b) => b.length - a.length).map(escape).join('|'), 'giu');
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) { return node.parentElement.closest('code,pre,a,button,svg,math,script,style,textarea') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; },
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (parent?.closest('pre,a,button,svg,math,script,style,textarea')) return NodeFilter.FILTER_REJECT;
+      if (parent?.tagName === 'CODE') {
+        const value = node.textContent.trim().toLocaleLowerCase();
+        return lookup.has(value) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
   });
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
