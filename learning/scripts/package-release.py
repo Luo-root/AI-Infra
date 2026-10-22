@@ -14,7 +14,7 @@ with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as archive:
                 archive.write(source, source.relative_to(LEARNING))
     for name in ['README.zh-CN.md', 'start.ps1', 'package.json', 'bun.lock', 'glossary.json',
                  'updates.json', 'playwright.config.js', 'web/index.html', 'web/vite.config.js',
-                 'tests/test_content.py', 'tests/test_sync.py', 'tests/test_freshness.py', 'tests/test_translation_structure.py',
+                 'tests/test_content.py', 'tests/test_sync.py', 'tests/test_freshness.py', 'tests/test_translation_structure.py', 'tests/scheduling-coverage.json',
                  'upstream/README.md', 'upstream/README.zh-CN.md', 'upstream/sync-state.json']:
         source = LEARNING / name
         if source.is_file():

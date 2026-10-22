@@ -1,0 +1,17 @@
+{
+  "document": "README.md",
+  "section": "1. 调度与工作负载",
+  "scope": "关键领域、两处工作组链接与学习主题；不把正文链接当作解释卡片",
+  "concepts": [
+    "批处理调度", "Kueue", "Volcano", "koordinator", "Godel", "YuniKorn",
+    "Kubernetes WG Batch", "GPU 调度", "HAMI", "NVIDIA Kai Scheduler",
+    "推理编排", "Grove", "层次化 Gang 调度", "拓扑感知放置", "GPU 管理",
+    "NVIDIA GPU Operator", "NVIDIA DRA Driver", "Device Plugins", "NVIDIA AICR",
+    "工作负载管理", "LWS", "LeaderWorkset", "Pod Groups", "Gang Scheduling",
+    "WAS", "Workload Aware Scheduling", "设备管理", "DRA", "NRI",
+    "Kubernetes WG Device Management", "检查点/恢复", "容错", "迁移",
+    "NVIDIA cuda-checkpoint", "AMD AMDGPU plugin", "CRIU", "Job", "pod",
+    "binpack", "spread", "DRF", "队列管理", "SLO", "多模型", "多租户调度"
+  ],
+  "notClaims": ["不宣称其他章节已经逐项审完", "词卡不代表相应硬件和工具已在本项目实测"]
+}

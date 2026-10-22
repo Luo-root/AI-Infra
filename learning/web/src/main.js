@@ -262,6 +262,22 @@ function highlightTerms(root) {
     if (typeof word === 'string' && word.trim() && !lookup.has(normalize(word))) lookup.set(normalize(word), term);
   }
   if (!lookup.size) return;
+  // Preserve navigation links. Exact term links get a separate, accessible
+  // explanation control rather than an interactive button nested inside <a>.
+  for (const anchor of root.querySelectorAll('a[href]')) {
+    if (anchor.closest('pre,svg,math') || !anchor.textContent.trim()) continue;
+    const term = lookup.get(normalize(anchor.textContent));
+    if (!term) continue;
+    if (anchor.nextElementSibling?.classList.contains('term-link-help')) continue;
+    const explain = element('button', 'ⓘ', 'term term-link-help');
+    explain.type = 'button';
+    explain.dataset.termId = term.id;
+    explain.setAttribute('aria-label', `解释术语：${anchor.textContent.trim()}`);
+    explain.setAttribute('aria-haspopup', 'dialog');
+    explain.title = '查看解释（原链接仍可跳转）';
+    explain.addEventListener('click', () => openCard(term, explain));
+    anchor.after(explain);
+  }
   const escape = (word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   // Markdown soft line breaks, tabs and NBSP are whitespace, not different terms.
   const pattern = new RegExp([...lookup.keys()].sort((a, b) => b.length - a.length)
@@ -293,6 +309,7 @@ function highlightTerms(root) {
       fragment.append(document.createTextNode(text.slice(last, start)));
       const button = element('button', word, 'term');
       button.type = 'button';
+      button.dataset.termId = lookup.get(normalize(word)).id;
       button.setAttribute('aria-label', `查阅术语：${word}`);
       button.setAttribute('aria-haspopup', 'dialog');
       button.addEventListener('click', () => openCard(lookup.get(normalize(word)), button));
