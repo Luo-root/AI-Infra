@@ -254,20 +254,24 @@ function createToc(root) {
     }
   }
 }
+function normalizeTerm(word) { return word.trim().replace(/\s+/gu, ' ').toLocaleLowerCase(); }
 function highlightTerms(root) {
   const lookup = new Map();
+  const normalize = normalizeTerm;
   for (const term of library.terms) for (const word of [term.term, ...(term.aliases || [])]) {
-    if (typeof word === 'string' && word.trim() && !lookup.has(word.toLocaleLowerCase())) lookup.set(word.toLocaleLowerCase(), term);
+    if (typeof word === 'string' && word.trim() && !lookup.has(normalize(word))) lookup.set(normalize(word), term);
   }
   if (!lookup.size) return;
   const escape = (word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const pattern = new RegExp([...lookup.keys()].sort((a, b) => b.length - a.length).map(escape).join('|'), 'giu');
+  // Markdown soft line breaks, tabs and NBSP are whitespace, not different terms.
+  const pattern = new RegExp([...lookup.keys()].sort((a, b) => b.length - a.length)
+    .map((word) => word.split(' ').map(escape).join('\\s+')).join('|'), 'giu');
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       const parent = node.parentElement;
       if (parent?.closest('pre,a,button,svg,math,script,style,textarea')) return NodeFilter.FILTER_REJECT;
       if (parent?.tagName === 'CODE') {
-        const value = node.textContent.trim().toLocaleLowerCase();
+        const value = normalize(node.textContent);
         return lookup.has(value) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
       return NodeFilter.FILTER_ACCEPT;
@@ -291,7 +295,7 @@ function highlightTerms(root) {
       button.type = 'button';
       button.setAttribute('aria-label', `查阅术语：${word}`);
       button.setAttribute('aria-haspopup', 'dialog');
-      button.addEventListener('click', () => openCard(lookup.get(word.toLocaleLowerCase()), button));
+      button.addEventListener('click', () => openCard(lookup.get(normalize(word)), button));
       fragment.append(button);
       last = end;
     }
@@ -521,8 +525,8 @@ document.addEventListener('selectionchange', () => {
 });
 $('lookup-selection').addEventListener('click', () => {
   if (!selectedText) { openCard(null, $('lookup-selection'), '请先在正文选中一个词'); return; }
-  const word = selectedText.toLocaleLowerCase();
-  const term = library.terms.find((item) => [item.term, item.zh, ...(item.aliases || [])].some((value) => typeof value === 'string' && value.toLocaleLowerCase() === word));
+  const word = normalizeTerm(selectedText);
+  const term = library.terms.find((item) => [item.term, item.zh, ...(item.aliases || [])].some((value) => typeof value === 'string' && normalizeTerm(value) === word));
   openCard(term, $('lookup-selection'), selectedText);
 });
 function refreshVoices() { if ('speechSynthesis' in window) voices = speechSynthesis.getVoices(); }
