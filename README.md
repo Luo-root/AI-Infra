@@ -8,6 +8,12 @@
 
 [项目源码 / Star](https://github.com/Luo-root/AI-Infra) · [使用说明](./learning/README.zh-CN.md) · [上游中文全景](https://github.com/pacoxu/AI-Infra/blob/main/README.zh-CN.md) · [上游英文全景](https://github.com/pacoxu/AI-Infra/blob/main/README.md)
 
+<p align="center">
+  <a href="https://github.com/Luo-root/AI-Infra/stargazers"><img src="https://img.shields.io/github/stars/Luo-root/AI-Infra?style=social" alt="Stars"></a>
+  <a href="https://github.com/Luo-root/AI-Infra/graphs/contributors"><img src="https://img.shields.io/github/contributors/Luo-root/AI-Infra?style=social" alt="Contributors"></a>
+</p>
+
+
 ## 为什么做这个项目
 
 AI-Infra 的资料很多，但刚开始学时经常卡在三个地方：文章是英文、术语太密集、不知道不同组件在整套系统里分别做什么。
@@ -90,3 +96,14 @@ python scripts/serve.py
 内容源自 [pacoxu/AI-Infra](https://github.com/pacoxu/AI-Infra)，感谢原作者和贡献者的整理。上游原文与历史观点不代表本项目逐项验证；本项目也不是上游官方中文版。
 
 本 Fork 增加中文译文、教学注释、词库、阅读器与维护流程。保留 [Apache-2.0 许可证](./LICENSE)。依赖库、外部图片与链接资料遵循各自许可和权属，不因收录到本站而重新授权。
+
+## ⭐ 支持 AI-Infra
+
+AI Infra 学习路径与笔记，重点覆盖推理与推理服务。
+
+如果你也在系统学习 AI 基础设施，Star 一下能帮这份笔记被更多人看到 —— 对个人维护的开源项目帮助很大。
+
+- 发现错误或有补充：[提交 issue](https://github.com/Luo-root/AI-Infra/issues)
+- 觉得好用但暂时没需求：点右上角的 ⭐ 就够了
+- 想参与维护：[提 PR](https://github.com/Luo-root/AI-Infra/pulls)
+
