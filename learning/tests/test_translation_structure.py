@@ -26,8 +26,11 @@ def slug(text):
 
 
 class TranslationStructureTests(unittest.TestCase):
-    def test_inference_translations_preserve_structure_code_and_targets(self):
-        for path in sorted((ROOT / 'learning/content/zh/docs/inference').glob('*.md')):
+    def test_translations_preserve_structure_code_and_targets(self):
+        directories = ['inference', 'training', 'observability']
+        paths = [path for directory in directories
+                 for path in (ROOT / 'learning/content/zh/docs' / directory).glob('*.md')]
+        for path in sorted(paths):
             meta = lib.metadata(lib.read_text(path))
             source_path = meta['source_path']
             source = subprocess.run(['git', 'show', f"{meta['source_commit']}:{source_path}"], cwd=ROOT,
@@ -40,6 +43,8 @@ class TranslationStructureTests(unittest.TestCase):
                 targets = lambda t: collections.Counter(re.findall(r'!?\[[^\]]*\]\(([^\s)]+)', t))
                 # Added explanatory notes may add links, but original links must survive.
                 self.assertFalse(targets(source) - targets(translated), 'Original link targets missing')
+                html_targets = lambda text: collections.Counter(re.findall(r'(?:href|src)=[\"\']([^\"\']+)[\"\']', text))
+                self.assertFalse(html_targets(source) - html_targets(translated), 'Original HTML link/image targets missing')
                 # Numeric/API details are especially easy to damage in translated comparison tables.
                 source_tables = [l for l in without_code(source).splitlines() if l.strip().startswith('|')]
                 translated_tables = [l for l in without_code(translated).splitlines() if l.strip().startswith('|')]
